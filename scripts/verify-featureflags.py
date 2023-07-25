@@ -1,6 +1,5 @@
 # Compare FF for specific environments
 import os
-import requests
 
 # Get FF for specific env
 PROJECT_KEY = os.getenv("PROJECT_KEY")
