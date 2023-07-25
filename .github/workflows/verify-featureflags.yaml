@@ -25,11 +25,11 @@ jobs:
         python-version: [3.8]
 
     env:
-      API_KEY: ${{ env.API_KEY }}
-      ENV1: ${{ env.ENV1 }}
-      ENV2: ${{ env.ENV2 }}
-      URL: ${{ env.URL }}
-      PROJECT_KEY: ${{ env.PROJECT_KEY }}
+      API_KEY: ${{ secrets.API_KEY }}
+      ENV1: ${{ vars.ENV1 }}
+      ENV2: ${{ vars.ENV2 }}
+      URL: ${{ vars.URL }}
+      PROJECT_KEY: ${{ vars.PROJECT_KEY }}
 
     steps:
       - uses: actions/checkout@v3
