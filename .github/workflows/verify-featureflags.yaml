@@ -12,7 +12,7 @@ on:
 jobs:
 
   ####################################
-  # verify feature flags script. Runs only on PR when targeted branch is main.
+  # verify feature flags script. Runs only on PR when targeted branch is main
   ####################################
   verify-featureflags:
     runs-on: ubuntu-latest
