@@ -44,4 +44,4 @@ jobs:
 
       - name: Verify feature flags
         run: |
-          python verify_featureflags.py
+          python ./verify-featureflags.py
