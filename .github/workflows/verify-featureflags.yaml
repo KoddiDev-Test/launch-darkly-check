@@ -12,12 +12,36 @@ on:
 jobs:
 
   ####################################
-  # Runs steps in build-changelogs from k1-github-action-workflows which runs
-  # verify changelogs script. Runs only on PR when targeted branch is develompent.
-  # If fails,this whole pipeline fails. Then Github would mark this PR not mergeable.
+  # verify feature flags script. Runs only on PR when targeted branch is main
   ####################################
   verify-featureflags:
-    uses: KoddiDev-Test/demo-repository/.github/workflows/verify-featureflags.yaml@main
-    with:
-      project-name: ${{ github.event.repository.name }}
-    secrets: inherit
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./scripts
+
+    strategy:
+      matrix:
+        python-version: [3.8]
+
+    env:
+      API_KEY: ${{ env.API_KEY }}
+      ENV1: ${{ env.ENV1 }}
+      ENV2: ${{ env.ENV2 }}
+      URL: ${{ env.URL }}
+      PROJECT_KEY: ${{ env.PROJECT_KEY }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+        - name: Install dependencies
+          run: |
+            python -m pip install --upgrade pip
+
+        - name: Verify feature flags
+          run: |
+            python ./verify_featureflags.py
