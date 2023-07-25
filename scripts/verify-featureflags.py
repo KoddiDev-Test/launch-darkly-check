@@ -19,7 +19,7 @@ failedItems = []
 for item in data["items"]:
     isMatch = item["environments"][ENV1]["on"] == item["environments"][ENV2]["on"]
     if isMatch == False:
-         print("Flag failed to match: ", item["name"], " (Staging: ", item["environments"]["test"]["on"], "| Production: ", item["environments"]["production"]["on"],")")
+         print("Flag failed to match: ", item["name"], "(Staging: ", item["environments"]["test"]["on"], "| Production: ", item["environments"]["production"]["on"],")")
          failedItems.append(item["name"])
 # Check if anything failed
 if len(failedItems) != 0:
