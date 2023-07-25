@@ -45,3 +45,4 @@ jobs:
       - name: Verify feature flags
         run: |
           python ./verify-featureflags.py
+          pip install -r requests
