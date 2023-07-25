@@ -24,3 +24,5 @@ for item in data["items"]:
 # Check if anything failed
 if len(failedItems) != 0:
     exit(1)
+else:
+    print(ENV1 + " and " + ENV2 + " flags match!")
