@@ -1,0 +1,23 @@
+###############################
+#Github Actions to verify feature flags
+###############################
+name: Verify-Featureflags
+
+#controls when the pipeline will trigger
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  ####################################
+  # Runs steps in build-changelogs from k1-github-action-workflows which runs
+  # verify changelogs script. Runs only on PR when targeted branch is develompent.
+  # If fails,this whole pipeline fails. Then Github would mark this PR not mergeable.
+  ####################################
+  verify-featureflags:
+    uses: KoddiDev-Test/demo-repository/.github/workflows/verify-featureflags.yaml@main
+    with:
+      project-name: ${{ github.event.repository.name }}
+    secrets: inherit
